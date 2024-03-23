@@ -12,6 +12,9 @@ fastapi = { extras = ["all"], version = "^0.110.0" }
 loguru = "^0.7.2"
 pyjwt = "^2.8.0"
 prisma = "^0.13.0"
+requests = "^2.31.0"
+lxml = "^5.1.0"
+beautifulsoup4 = "^4.12.3"
 
 
 [tool.poetry.group.dev.dependencies]
