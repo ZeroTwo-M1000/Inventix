@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+
 from core.db import PrismaConnection
 from utils.decorators import Decorators
 

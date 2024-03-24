@@ -1,5 +1,6 @@
 from prisma import Prisma
 
+
 class PrismaConnection:
     def __init__(self):
         self.prisma = Prisma()

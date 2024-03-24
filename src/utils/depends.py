@@ -1,7 +1,6 @@
 import jwt
+from fastapi import Depends, Request
 from jwt import PyJWTError
-from fastapi import Depends
-from fastapi import Request
 
 from api.user.dao import UserDAO
 from core.config import settings
@@ -17,9 +16,7 @@ def get_token(request: Request):
 
 async def get_current_user(token=Depends(get_token)):
     try:
-        payload = jwt.decode(
-            token, settings.SECRET_KEY, settings.ALGORITHM
-        )
+        payload = jwt.decode(token, settings.SECRET_KEY, settings.ALGORITHM)
     except PyJWTError:
         raise TokenError
     name = payload.get("sub")

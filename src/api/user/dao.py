@@ -1,6 +1,5 @@
-from core.config import settings
-
 from api.user.schemas import SUser, SUserCreate, SUserMe
+from core.config import settings
 
 
 class UserDAO:
@@ -11,15 +10,11 @@ class UserDAO:
 
     @staticmethod
     async def get_by_name(name: str):
-        return await settings.prisma_connection.prisma.user.find_first(
-            where={"name": name}
-        )
+        return await settings.prisma_connection.prisma.user.find_first(where={"name": name})
 
     @staticmethod
     async def create(user: SUserCreate):
-        return await settings.prisma_connection.prisma.user.create(
-            data=user.model_dump()
-        )
+        return await settings.prisma_connection.prisma.user.create(data=user.model_dump())
 
     @staticmethod
     async def get_me(user):
