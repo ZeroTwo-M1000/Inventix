@@ -8,7 +8,7 @@ from utils.depends import get_current_user
 router = APIRouter()
 
 
-@router.get("")
+@router.get("/all")
 async def get_all_users(token=Depends(get_current_user)) -> list[SUser]:
     return await UserDAO.get_all()
 
@@ -16,12 +16,11 @@ async def get_all_users(token=Depends(get_current_user)) -> list[SUser]:
 @router.post("/login")
 async def login(response: Response, user: SUserLogin) -> dict:
     user_db = await UserDAO.get_by_name(user.name)
-    if not user_db or not authenticate_user(user.name, user.password):
+    if not user_db or not await authenticate_user(user.name, user.password):
         raise HTTPException(status_code=401, detail="Invalid username or password")
+    token = create_access_token(data={"sub": user.name})
     response.set_cookie(
-        key="access_token", value=create_access_token(
-            data={"sub": user.name}
-        ), httponly=True
+        key="access_token", value=token, httponly=True
     )
     return {"details": "Login successful"}
 
@@ -37,9 +36,8 @@ async def register(response: Response, user: SUserCreate):
     response.set_cookie(
         key="access_token", value=create_access_token(
             data={"sub": user.name}
-        ), httponly=True
+        )
     )
-
     return {"details": "Register successful"}
 
 

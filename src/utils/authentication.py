@@ -24,7 +24,7 @@ def create_access_token(data: dict) -> str:
     encoded_jwt = jwt.encode(
         to_encode, settings.SECRET_KEY, settings.ALGORITHM
     )
-    return encoded_jwt
+    return str(encoded_jwt)
 
 
 async def authenticate_user(name: str, password: str):
