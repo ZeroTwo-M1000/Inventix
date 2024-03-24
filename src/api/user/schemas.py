@@ -22,3 +22,10 @@ class SUserCreate(BaseModel):
 class SUserLogin(BaseModel):
     name: str
     password: str
+
+
+class SUserMe(BaseModel):
+    name: str
+    role: str
+    img: Optional[str] = None
+    date: datetime

@@ -1,6 +1,6 @@
 from core.config import settings
 
-from api.user.schemas import SUser, SUserCreate
+from api.user.schemas import SUser, SUserCreate, SUserMe
 
 
 class UserDAO:
@@ -20,3 +20,7 @@ class UserDAO:
         return await settings.prisma_connection.prisma.user.create(
             data=user.model_dump()
         )
+
+    @staticmethod
+    async def get_me(user):
+        return SUserMe(**user.dict())

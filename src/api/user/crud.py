@@ -41,3 +41,8 @@ async def register(response: Response, user: SUserCreate):
     )
 
     return {"details": "Register successful"}
+
+
+@router.get("/me")
+async def get_me(token=Depends(get_current_user)):
+    return await UserDAO.get_me(token)
