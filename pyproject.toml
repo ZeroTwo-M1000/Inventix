@@ -8,13 +8,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 passlib = { extras = ["bcrypt"], version = "^1.7.4" }
-fastapi = { extras = ["all"], version = "^0.110.0" }
 loguru = "^0.7.2"
 pyjwt = "^2.8.0"
 prisma = "^0.13.0"
 requests = "^2.31.0"
 lxml = "^5.1.0"
 beautifulsoup4 = "^4.12.3"
+fastapi = {extras = ["all"], version = "^0.110.0"}
 
 
 [tool.poetry.group.dev.dependencies]

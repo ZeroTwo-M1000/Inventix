@@ -13,7 +13,7 @@ model User {
     name          String   @unique
     hash_password String
     role          String
-    img           String
+    img           String?
     date          DateTime @default(now())
 
     @@map("users")

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from core.config import settings
+from routers.api_router import api_router
 
 
 def init_app() -> FastAPI:
@@ -13,6 +14,8 @@ def init_app() -> FastAPI:
 
     app.add_event_handler("startup", on_startup)
     app.add_event_handler("shutdown", on_shutdown)
+
+    app.include_router(api_router)
 
     return app
 
