@@ -67,7 +67,6 @@ class DreamJob:
             'management': management,
             'recreation_conditions': recreation_conditions,
             'growth_opportunities': growth_opportunities,
-            'Site': "DreamJob"
         }
 
         return site_statistics
@@ -76,6 +75,7 @@ class DreamJob:
         return {
             'reviews': self.get_reviews(),
             'site_statistics': self.get_site_statistics(),
+            'name': 'DreamJob'
         }
 
 
