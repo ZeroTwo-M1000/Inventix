@@ -18,3 +18,52 @@ model User {
 
     @@map("users")
 }
+
+model Site {
+    id       String     @id @default(uuid())
+    name     String
+    url      String
+    date     DateTime   @default(now())
+    sitedata SiteData[]
+    reviews  Review[]
+
+    @@map("sites")
+}
+
+model SiteData {
+    id                    String   @id @default(uuid())
+    count_review          Int
+    count_bad_review      Int?
+    count_good_review     Int?
+    rating                Float?
+    working_conditions    Float?
+    income_conditions     Float?
+    team                  Float?
+    management            Float?
+    recreation_conditions Float?
+    growth_opportunities  Float?
+    date                  DateTime @default(now())
+    Site                  Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
+    siteId                String
+
+    @@map("sitedata")
+}
+
+model Review {
+    id                    String   @id @default(uuid())
+    text                  String   @unique
+    bad_text              String?
+    good_text             String?
+    rating                Float?
+    working_conditions    Float?
+    income_conditions     Float?
+    management            Float?
+    team                  Float?
+    growth_opportunities  Float?
+    recreation_conditions Float?
+    date                  DateTime @default(now())
+    Site                  Site    @relation(fields: [siteId], references: [id], onDelete: Cascade)
+    siteId                String
+
+    @@map("reviews")
+}
