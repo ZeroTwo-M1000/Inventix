@@ -2,8 +2,8 @@ from fastapi import APIRouter
 
 from api.review.crud import router as review_router
 from api.site.crud import router as site_router
-from api.user.crud import router as user_router
 from api.site_data.crud import router as site_data_router
+from api.user.crud import router as user_router
 
 api_router = APIRouter()
 

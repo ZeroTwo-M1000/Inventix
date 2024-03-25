@@ -17,7 +17,10 @@ class SiteDAO:
 
     @staticmethod
     def get_by_name_full(name: str):
-        return settings.prisma_connection.prisma.site.find_first(where={"name": name}, include={
-            "sitedata": True,
-            "reviews": True,
-        })
+        return settings.prisma_connection.prisma.site.find_first(
+            where={"name": name},
+            include={
+                "sitedata": True,
+                "reviews": True,
+            },
+        )

@@ -46,6 +46,7 @@ model SiteData {
     Site                  Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
     siteId                String
 
+    @@unique([siteId, count_review])
     @@map("sitedata")
 }
 
@@ -62,7 +63,7 @@ model Review {
     growth_opportunities  Float?
     recreation_conditions Float?
     date                  DateTime @default(now())
-    Site                  Site    @relation(fields: [siteId], references: [id], onDelete: Cascade)
+    Site                  Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
     siteId                String
 
     @@map("reviews")

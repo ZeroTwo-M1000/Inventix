@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
 from api.review.dao import ParserDao
-from api.review.schemas import SReviewParse, SReviewCreate
+from api.review.schemas import SReviewCreate, SReviewParse
 from api.site.dao import SiteDAO
 
 router = APIRouter()

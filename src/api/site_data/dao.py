@@ -6,4 +6,7 @@ class SiteDataDAO:
 
     @staticmethod
     async def create(data: SBaseSiteDataCreate):
-        return await settings.prisma_connection.prisma.sitedata.create(data=data.model_dump())
+        try:
+            return await settings.prisma_connection.prisma.sitedata.create(data=data.model_dump())
+        except:
+            return
